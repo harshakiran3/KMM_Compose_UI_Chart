@@ -3,6 +3,6 @@ package com.example.kmmcocoapods
 import androidx.compose.runtime.Composable
 
 @Composable
-fun StartScreenIOS() {
+internal fun StartScreenIOS() {
     ChartScreen()
 }

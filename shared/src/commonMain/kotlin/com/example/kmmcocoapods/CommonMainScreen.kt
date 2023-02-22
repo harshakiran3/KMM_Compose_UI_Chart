@@ -4,6 +4,6 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 
 @Composable
-fun ChartScreen() {
+internal fun ChartScreen() {
     Text("Finallllyy in common.")
 }
