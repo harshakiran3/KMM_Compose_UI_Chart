@@ -7,6 +7,12 @@ plugins {
     id("org.jetbrains.compose") version "1.3.0"
 }
 
+buildscript {
+    dependencies {
+        classpath("org.jetbrains.kotlin:kotlin-android-extensions:1.8.0")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0")
+    }
+}
 
 allprojects {
     repositories {

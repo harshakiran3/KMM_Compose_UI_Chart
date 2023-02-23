@@ -38,7 +38,6 @@ kotlin {
                 implementation(compose.foundation)
                 implementation(compose.material)
                 implementation(compose.ui)
-                implementation(compose.materialIconsExtended)
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
                 implementation("org.jetbrains.compose.components:components-resources:1.3.0-beta04-dev879")
             }
@@ -81,3 +80,10 @@ android {
         targetSdk = 33
     }
 }
+dependencies {
+    implementation("androidx.compose.ui:ui:1.3.3")
+    implementation("androidx.compose.foundation:foundation:1.3.1")
+    implementation("androidx.compose.material:material:1.3.1")
+    implementation("androidx.compose.ui:ui-graphics:1.3.3")
+}
+
