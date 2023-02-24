@@ -13,21 +13,6 @@ import androidx.compose.ui.unit.LayoutDirection
 import com.example.kmmcocoapods.ui.linechart.model.GridLines
 import com.example.kmmcocoapods.common.model.Point
 
-
-/**
-return the width of text in canvas drawn text
- */
-fun String.getTextWidth(paint: Paint): Float {
-    return paint.asFrameworkPaint().strokeWidth
-}
-
-/**
-return the height of text in canvas drawn text
- */
-fun String.getTextHeight(paint: Paint): Int {
-    return 200
-}
-
 /**
 return the shape that is used to mask a particular area for given leftPadding & rightPadding
  */
@@ -262,3 +247,22 @@ fun Offset.isYAxisTapped(
 ) =
     ((tapOffset.y) < y + (yOffset + tapPadding) / 2) && ((tapOffset.y) > y - (yOffset + tapPadding) / 2) &&
             ((tapOffset.plus(Offset(tapPadding, 0f))).x < xAxisWidth) && ((tapOffset.x) > left)
+
+/**
+ * Returns list of points
+ * @param listSize: Size of total number of points needed.
+ * @param start: X values to start from. ex: 50 to 100
+ * @param maxRange: Max range of Y values
+ */
+fun getLineChartData(listSize: Int, start: Int = 0, maxRange: Int): List<Point> {
+    val list = arrayListOf<Point>()
+    for (index in 0 until listSize) {
+        list.add(
+            Point(
+                index.toFloat(),
+                (start until maxRange).random().toFloat()
+            )
+        )
+    }
+    return list
+}

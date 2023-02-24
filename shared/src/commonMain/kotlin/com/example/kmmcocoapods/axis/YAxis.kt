@@ -9,17 +9,13 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Paint
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.nativeCanvas
-import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.text.*
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.kmmcocoapods.common.extensions.getTextHeight
-import com.example.kmmcocoapods.common.extensions.getTextWidth
 import com.example.kmmcocoapods.common.model.Point
 import kotlin.math.ceil
 
@@ -276,7 +272,7 @@ private fun DrawScope.drawAxisLabel(
         }
         val y = if (dataCategoryOptions.isDataCategoryInYAxis)
             yPos + height / 2
-        else yAxisHeight + height / 2 - ((segmentHeight * index))
+        else yAxisHeight + height / 2 - ((segmentHeight * index)) - axisTopPadding.toPx()
         drawText(
             textMeasurer = textMeasure,
             text = yAxisLabel,

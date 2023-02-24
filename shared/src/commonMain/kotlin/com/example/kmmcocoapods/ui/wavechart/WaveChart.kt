@@ -29,8 +29,6 @@ import com.example.kmmcocoapods.common.components.ItemDivider
 import com.example.kmmcocoapods.common.components.accessibility.AccessibilityBottomSheetDialog
 import com.example.kmmcocoapods.common.components.accessibility.LinePointInfo
 import com.example.kmmcocoapods.common.extensions.drawGridLines
-import com.example.kmmcocoapods.common.extensions.getTextHeight
-import com.example.kmmcocoapods.common.extensions.getTextWidth
 import com.example.kmmcocoapods.common.extensions.isNotNull
 import com.example.kmmcocoapods.common.model.Point
 import com.example.kmmcocoapods.ui.linechart.*
@@ -117,7 +115,7 @@ internal fun WaveChart(modifier: Modifier, waveChartData: WaveChartData) {
                 },
                 onDraw = { scrollOffset, xZoom ->
                     val yBottom = size.height - rowHeight
-                    val yOffset = ((yBottom - paddingTop.toPx()).div(maxElementInYAxis))
+                    val yOffset = ((yBottom - paddingTop.toPx() - bottomPadding.toPx() - yAxisData.axisLineThickness.toPx() - yAxisData.indicatorLineWidth.toPx()).div(maxElementInYAxis))
                     xOffset = xAxisData.axisStepSize.toPx() * xZoom
                     val xLeft = columnWidth // To add extra space if needed
                     val pointsData = getMappingPointsToGraph(
@@ -353,7 +351,7 @@ private fun DrawScope.drawXAxisLabel(
         drawContext.canvas.nativeCanvas.apply {
             val x = xPos - (labelWidth / 2)
             val y =
-                yPos + labelHeight / 2 + indicatorLineWidth.toPx() + labelAndAxisLinePadding.toPx()
+                yPos + labelHeight / 2
             print("Pointer x, y for the text position - $x, $y")
             drawText(
                 textMeasurer = textMeasure,

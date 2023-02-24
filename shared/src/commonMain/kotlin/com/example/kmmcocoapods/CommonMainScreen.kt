@@ -1,14 +1,15 @@
 package com.example.kmmcocoapods
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
+import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import co.yml.charts.ui.wavechart.model.WavePlotData
+import com.example.kmmcocoapods.axis.AxisData
+import com.example.kmmcocoapods.common.extensions.getLineChartData
 import com.example.kmmcocoapods.ui.linechart.model.IntersectionPoint
 import com.example.kmmcocoapods.ui.linechart.model.LineStyle
 import com.example.kmmcocoapods.ui.linechart.model.LineType
@@ -16,10 +17,6 @@ import com.example.kmmcocoapods.ui.linechart.model.SelectionHighlightPopUp
 import com.example.kmmcocoapods.ui.wavechart.WaveChart
 import com.example.kmmcocoapods.ui.wavechart.model.Wave
 import com.example.kmmcocoapods.ui.wavechart.model.WaveChartData
-import co.yml.charts.ui.wavechart.model.WavePlotData
-import com.example.kmmcocoapods.axis.AxisData
-import com.example.kmmcocoapods.common.model.Point
-import kotlin.math.roundToLong
 
 @Composable
 internal fun ChartScreen() {
@@ -34,18 +31,7 @@ internal fun ChartScreen() {
                 .padding(it),
             contentAlignment = Alignment.TopCenter
         ) {
-            val pointsData = listOf<Point>(
-                Point(0f, 0f),
-                Point(1f, -1f),
-                Point(2f, 2f),
-                Point(3f, -3f),
-                Point(4f, 4f),
-                Point(5f, -5f),
-                Point(6f, 2f),
-                Point(7f, -3f),
-                Point(8f, 1f),
-                Point(9f, 2f),
-                )
+            val pointsData = getLineChartData(100, -20, 80)
             val xAxisData = AxisData.Builder()
                 .axisStepSize(40.dp)
                 .steps(pointsData.size - 1)
