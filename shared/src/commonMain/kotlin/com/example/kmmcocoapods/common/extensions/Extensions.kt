@@ -12,6 +12,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import com.example.kmmcocoapods.ui.linechart.model.GridLines
 import com.example.kmmcocoapods.common.model.Point
+import com.example.kmmcocoapods.util.DecimalFormat
 
 /**
 return the shape that is used to mask a particular area for given leftPadding & rightPadding
@@ -266,3 +267,9 @@ fun getLineChartData(listSize: Int, start: Int = 0, maxRange: Int): List<Point> 
     }
     return list
 }
+
+/***
+ * Returns converted single precision string from float value
+ */
+fun Float.formatToSinglePrecision(): String = DecimalFormat().format(this)
+

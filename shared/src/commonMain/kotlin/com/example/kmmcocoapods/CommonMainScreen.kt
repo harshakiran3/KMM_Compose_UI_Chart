@@ -9,6 +9,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import co.yml.charts.ui.wavechart.model.WavePlotData
 import com.example.kmmcocoapods.axis.AxisData
+import com.example.kmmcocoapods.common.extensions.formatToSinglePrecision
 import com.example.kmmcocoapods.common.extensions.getLineChartData
 import com.example.kmmcocoapods.ui.linechart.model.IntersectionPoint
 import com.example.kmmcocoapods.ui.linechart.model.LineStyle
@@ -48,7 +49,7 @@ internal fun ChartScreen() {
                     val yMin = pointsData.minOf { it.y }
                     val yMax = pointsData.maxOf { it.y }
                     val yScale = (yMax - yMin) / 10
-                    ((i * yScale) + yMin).toString()
+                    ((i * yScale) + yMin).formatToSinglePrecision()
                 }
                 .labelAndAxisLinePadding(30.dp)
                 .axisLabelColor(Color.Blue)
@@ -63,7 +64,7 @@ internal fun ChartScreen() {
                             intersectionPoint = IntersectionPoint(color = Color.Red),
                             selectionHighlightPopUp = SelectionHighlightPopUp(popUpLabel = { x, y ->
                                 val xLabel = "x : ${x.toInt()} "
-                                val yLabel = "y : ${y.toInt()}"
+                                val yLabel = "y : ${y.formatToSinglePrecision().toString()}"
                                 "$xLabel $yLabel"
                             })
                         )
